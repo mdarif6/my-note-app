@@ -1,41 +1,26 @@
 import "./App.css";
 import logo from "./logo.png";
+import ArchivePage from "./pages/archive-page/ArchivePage";
+import HomePage from "./pages/home-page/HomePage";
+import LabelPage from "./pages/label-page/LabelPage";
+import LandingPage from "./pages/ladnding-page/LandingPage";
+import LoginPage from "./pages/login-page/LoginPage";
+import SignupPage from "./pages/signup-page/SignupPage";
+import { Rout, Route, Routes } from "react-router-dom";
+import TrashPage from "./pages/trash-page/TrashPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="mockBee logo" width="180" height="180" />
-        <h1 className="brand-title">
-          Welcome to <span>mockBee!</span>
-        </h1>
-        <p className="brand-description">
-          Get started by editing <code>src/App.js</code>
-        </p>
-        <div className="links">
-          <a
-            href="https://mockbee.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore mockBee
-          </a>
-          <a
-            href="https://mockbee.netlify.app/docs/api/introduction"
-            target="_blank"
-            rel="noreferrer"
-          >
-            API Documentation
-          </a>
-          <a
-            href="https://github.com/neogcamp/mockBee"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contribute
-          </a>
-        </div>
-      </header>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/label" element={<LabelPage />} />
+        <Route path="/archive" element={<ArchivePage />} />
+        <Route path="/trash" element={<TrashPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+      </Routes>
     </div>
   );
 }
