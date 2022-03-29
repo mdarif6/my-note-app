@@ -6,7 +6,7 @@ import TrashMain from "./TrashMain";
 
 export default function TrashPage() {
   return (
-    <div class="typora-container">
+    <div className="typora-container">
       <Header />
       <TrashAside />
       <TrashMain />

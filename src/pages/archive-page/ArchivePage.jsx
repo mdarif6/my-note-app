@@ -7,7 +7,7 @@ import ArchiveAside from "./ArchiveAside";
 import ArchiveMain from "./ArchiveMain";
 export default function ArchivePage() {
   return (
-    <div class="typora-container">
+    <div className="typora-container">
       <Header />
       <ArchiveAside />
       <ArchiveMain />

@@ -6,7 +6,7 @@ import LabelAside from "./LabelAside";
 import LabelMain from "./LabelMain";
 export default function LabelPage() {
   return (
-    <div class="typora-container">
+    <div className="typora-container">
       <Header />
       <LabelAside />
       <LabelMain />

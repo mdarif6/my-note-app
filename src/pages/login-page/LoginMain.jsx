@@ -2,26 +2,26 @@ import React from "react";
 import "./LoginPage.css";
 export default function LoginMain() {
   return (
-    <div class="login-main-container">
-      <div class="typora-login-content">
-        <div class="typora-login-window">
+    <div className="login-main-container">
+      <div className="typora-login-content">
+        <div className="typora-login-window">
           <h2>Login</h2>
 
           <form action="inputs">
             <div className="login-input-wraper">
-              <div class="t-input-text">
+              <div className="t-input-text">
                 <label>Email address</label>
                 <input type="text" placeholder="xyz@email.com" />
               </div>
 
-              <div class="t-input-text">
+              <div className="t-input-text">
                 <label>Password</label>
                 <input type="password" placeholder="***************" />
               </div>
             </div>
 
-            <div class="login-check">
-              <div class="login-check-label">
+            <div className="login-check">
+              <div className="login-check-label">
                 <input
                   type="checkbox"
                   name="consent"
@@ -35,11 +35,11 @@ export default function LoginMain() {
               </div>
             </div>
             <a href="#">
-              <button class="btn btn-primary">Login</button>
+              <button className="btn btn-primary">Login</button>
             </a>
-            <div class="login-bottom-text">
+            <div className="login-bottom-text">
               <a href="#">
-                Create New Account <i class="fas fa-chevron-right"></i>
+                Create New Account <i className="fas fa-chevron-right"></i>
               </a>
             </div>
           </form>

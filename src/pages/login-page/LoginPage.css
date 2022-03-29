@@ -2,10 +2,14 @@
 html,
 :root {
   --typora-primary-color: #7c3aed;
+  --typora-main-background-color: #f8f6f6;
+  --typora-white-color: #ffffff;
+  --typora-logo-color: #8a2be2;
+  --typora-light-gray-color: #d3d3d3;
 }
 
 body {
-  background-color: lightgray;
+  background-color: var(--typora-light-gray-color);
   font-family: "Roboto", sans-serif;
 }
 .login-main-container {
@@ -15,7 +19,7 @@ body {
   display: flex;
   justify-content: space-around;
   width: fit-content;
-  background-color: white;
+  background-color: var(--typora-white-color);
 }
 
 .login-input-wraper {

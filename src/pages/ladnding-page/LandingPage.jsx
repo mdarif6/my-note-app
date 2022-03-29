@@ -3,13 +3,13 @@ import "./LandingPage.css";
 import heroimage from "../../assets/images/hero.svg";
 export default function LandingPage() {
   return (
-    <div class="landing-main-container">
-      <div class="landing-main-information">
-        <div class="main-heading">
+    <div className="landing-main-container">
+      <div className="landing-main-information">
+        <div className="main-heading">
           My <span>Notes</span>
         </div>
-        <div class="middle-content">
-          <div class="middle-bold">
+        <div className="middle-content">
+          <div className="middle-bold">
             <p>Meet your Modern</p>
             <p>
               <span>Note Taking App</span>
@@ -20,12 +20,12 @@ export default function LandingPage() {
             efficiency without any efforts.
           </p>
         </div>
-        <div class="lower-content">
-          <button class="btn btn-primary">Join Now</button>
+        <div className="lower-content">
+          <button className="btn btn-primary">Join Now</button>
           <p>Alredy have an account ?</p>
         </div>
       </div>
-      <div class="typora-hero">
+      <div className="typora-hero">
         <img src={heroimage} alt="hero-image" />
       </div>
     </div>

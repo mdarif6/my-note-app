@@ -2,73 +2,73 @@ import React from "react";
 
 export default function ArchiveMain() {
   return (
-    <main class="typora-main">
-      <div class="search-box-container">
-        <div class="search-box">
+    <main className="typora-main">
+      <div className="search-box-container">
+        <div className="search-box">
           <input
-            class="search-input"
+            className="search-input"
             type="text"
             name="name"
             placeholder="search"
           />
-          <button class="search-button">
-            <i class="fas fa-search"></i>
+          <button className="search-button">
+            <i className="fas fa-search"></i>
           </button>
         </div>
       </div>
       <div id="note-category">PINNED</div>
-      <div class="typora-note">
-        <div class="note-title-and-pin">
-          <input class="note-title" type="text" placeholder="Title" />
+      <div className="typora-note">
+        <div className="note-title-and-pin">
+          <input className="note-title" type="text" placeholder="Title" />
           <div>
-            <i class="fas fa-thumbtack"></i>
+            <i className="fas fa-thumbtack"></i>
           </div>
         </div>
-        <input class="note-content" type="text" placeholder="Content" />
-        <div class="note-lower-date-and-icons">
-          <div class="note-date-icons">Date</div>
-          <div class="note-lower-icons">
-            <i class="fas fa-palette"></i>
-            <i class="fas fa-tag"></i>
-            <i class="fas fa-archive"></i>
-            <i class="fas fa-trash-alt"></i>
+        <input className="note-content" type="text" placeholder="Content" />
+        <div className="note-lower-date-and-icons">
+          <div className="note-date-icons">Date</div>
+          <div className="note-lower-icons">
+            <i className="fas fa-palette"></i>
+            <i className="fas fa-tag"></i>
+            <i className="fas fa-archive"></i>
+            <i className="fas fa-trash-alt"></i>
           </div>
         </div>
       </div>
-      <div class="typora-note">
-        <div class="note-title-and-pin">
-          <input class="note-title" type="text" placeholder="Title" />
+      <div className="typora-note">
+        <div className="note-title-and-pin">
+          <input className="note-title" type="text" placeholder="Title" />
           <div>
-            <i class="fas fa-thumbtack"></i>
+            <i className="fas fa-thumbtack"></i>
           </div>
         </div>
-        <input class="note-content" type="text" placeholder="Content" />
-        <div class="note-lower-date-and-icons">
-          <div class="note-date-icons">Date</div>
-          <div class="note-lower-icons">
-            <i class="fas fa-palette"></i>
-            <i class="fas fa-tag"></i>
-            <i class="fas fa-archive"></i>
-            <i class="fas fa-trash-alt"></i>
+        <input className="note-content" type="text" placeholder="Content" />
+        <div className="note-lower-date-and-icons">
+          <div className="note-date-icons">Date</div>
+          <div className="note-lower-icons">
+            <i className="fas fa-palette"></i>
+            <i className="fas fa-tag"></i>
+            <i className="fas fa-archive"></i>
+            <i className="fas fa-trash-alt"></i>
           </div>
         </div>
       </div>
       <div>OTHERS</div>
-      <div class="typora-note">
-        <div class="note-title-and-pin">
-          <input class="note-title" type="text" placeholder="Title" />
+      <div className="typora-note">
+        <div className="note-title-and-pin">
+          <input className="note-title" type="text" placeholder="Title" />
           <div>
-            <i class="fas fa-thumbtack"></i>
+            <i className="fas fa-thumbtack"></i>
           </div>
         </div>
-        <input class="note-content" type="text" placeholder="Content" />
-        <div class="note-lower-date-and-icons">
-          <div class="note-date-icons">Date</div>
-          <div class="note-lower-icons">
-            <i class="fas fa-palette"></i>
-            <i class="fas fa-tag"></i>
-            <i class="fas fa-archive"></i>
-            <i class="fas fa-trash-alt"></i>
+        <input className="note-content" type="text" placeholder="Content" />
+        <div className="note-lower-date-and-icons">
+          <div className="note-date-icons">Date</div>
+          <div className="note-lower-icons">
+            <i className="fas fa-palette"></i>
+            <i className="fas fa-tag"></i>
+            <i className="fas fa-archive"></i>
+            <i className="fas fa-trash-alt"></i>
           </div>
         </div>
       </div>

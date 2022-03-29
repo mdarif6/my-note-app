@@ -7,7 +7,7 @@ import "./HomePage.css";
 
 export default function HomePage() {
   return (
-    <div class="typora-container">
+    <div className="typora-container">
       <Header />
       <Aside />
       <Main />

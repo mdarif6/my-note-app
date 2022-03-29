@@ -3,81 +3,81 @@ import { Link } from "react-router-dom";
 
 export default function Aside() {
   return (
-    <aside class="typora-aside">
-      <div class="aside-content-wraper">
-        <div class="typora-aside-content">
-          <div class="aside-content-label">
+    <aside className="typora-aside">
+      <div className="aside-content-wraper">
+        <div className="typora-aside-content">
+          <div className="aside-content-label">
             <div>
-              <i class="fas fa-home"></i>
+              <i className="fas fa-home"></i>
             </div>
-            <div class="link-active">Home</div>
+            <div className="link-active">Home</div>
           </div>
 
-          <div class="aside-content-label">
+          <div className="aside-content-label">
             <div>
-              <i class="fas fa-tag"></i>
+              <i className="fas fa-tag"></i>
             </div>
             <div>Labels</div>
           </div>
 
-          <div class="aside-content-label">
+          <div className="aside-content-label">
             <div>
-              <i class="fas fa-archive"></i>
+              <i className="fas fa-archive"></i>
             </div>
             <div>Archive</div>
           </div>
-          <div class="aside-content-label">
+          <div className="aside-content-label">
             <div>
-              <i class="fas fa-trash"></i>
+              <i className="fas fa-trash"></i>
             </div>
             <div>Trash</div>
           </div>
-          <div class="aside-content-label">
+          <div className="aside-content-label">
             <div>
-              <i class="far fa-user-circle"></i>
+              <i className="far fa-user-circle"></i>
             </div>
             <div>Profile</div>
           </div>
         </div>
-        <div class="join-button">
-          <button class="btn btn-primary">Create New Notes</button>
+        <div className="join-button">
+          <button className="btn btn-primary">Create New Notes</button>
         </div>
-        <div class="typora-sorting-container">
-          <div class="sorting-heading">
+        <div className="typora-sorting-container">
+          <div className="sorting-heading">
             Sort & Filter Notes
-            <i id="drop-down" class="fas fa-chevron-circle-down"></i>
+            <i id="drop-down" className="fas fa-chevron-circle-down"></i>
           </div>
-          <div class="blank-div"></div>
-          <div class="to-show-all-sorting">
-            <div class="sorting">
+          <div className="blank-div"></div>
+          <div className="to-show-all-sorting">
+            <div className="sorting">
               <label className="lable-name" for="time">
                 Sort By
               </label>
               <div>
-                <select class="select" name="time" id="time">
+                <select className="select" name="time" id="time">
                   <option value="newst">Newest First</option>
                   <option value="oldest">Oldest First</option>
                 </select>
               </div>
             </div>
-            <div class="filtering">
+            <div className="filtering">
               <label className="lable-name" for="time">
                 Filter By
               </label>
               <div>
-                <select class="select" name="priority" id="priority">
+                <select className="select" name="priority" id="priority">
                   <option value="high">High</option>
                   <option value="medium">Medium</option>
                   <option value="low">Low</option>
                 </select>
               </div>
             </div>
-            <div class="selection">
+            <div className="selection">
               <label className="lable-name">Select Label</label>
-              <div class="select-checkbox">
+              <div className="select-checkbox">
                 <div>
                   <input
-                    class="select-input"
+                    className="select-input"
                     type="checkbox"
                     name="label1"
                     value="Bike"
@@ -88,7 +88,7 @@ export default function Aside() {
                 </div>
                 <div>
                   <input
-                    class="select-input"
+                    className="select-input"
                     type="checkbox"
                     name="label2"
                     value="Car"
@@ -99,7 +99,7 @@ export default function Aside() {
                 </div>
                 <div>
                   <input
-                    class="select-input"
+                    className="select-input"
                     type="checkbox"
                     name="lable3"
                     value="Boat"
