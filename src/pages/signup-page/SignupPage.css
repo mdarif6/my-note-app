@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+html,
+:root {
+  --typora-primary-color: #7c3aed;
+  --typora-main-background-color: #f8f6f6;
+  --typora-white-color: #ffffff;
+  --typora-logo-color: #8a2be2;
+  --typora-light-gray-color: #d3d3d3;
+}
+
+body {
+  background-color: var(--typora-light-gray-color);
+  font-family: "Roboto", sans-serif;
+}
+.login-main-container {
+  padding: 3rem;
+  border-radius: 10px;
+  margin: 4rem auto;
+  display: flex;
+  justify-content: space-around;
+  width: fit-content;
+  background-color: var(--typora-white-color);
+}
+
+.login-input-wraper {
+  display: flex;
+  flex-direction: column;
+}
+.t-input-text label {
+  text-align: left;
+}
+.t-input-text input {
+  font-size: 1rem;
+}
+.t-input-text {
+  display: flex;
+  flex-direction: column;
+}
+.t-input-text input {
+  padding: 1rem;
+}
+
+.login-check {
+  padding: 1rem 0;
+  display: flex;
+  gap: 2rem;
+}
+
+.btn-primary {
+  width: 100%;
+}
+.login-bottom-text a,
+.login-check a {
+  text-decoration: none;
+}

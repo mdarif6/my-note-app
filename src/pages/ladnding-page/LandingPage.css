@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+html,
+:root {
+  --typora-primary-color: #7c3aed;
+  --typora-main-background-color: #f8f6f6;
+  --typora-white-color: #ffffff;
+  --typora-logo-color: #8a2be2;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+.landing-main-container {
+  padding: 3rem;
+  border-radius: 10px;
+  margin: 4rem auto;
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  background-color: var(--typora-white-color);
+}
+
+.typora-hero {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.typora-hero img {
+  max-width: 350px;
+}
+.landing-main-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
+  padding-right: 5rem;
+}
+.main-heading {
+  font-weight: bold;
+  font-size: 2rem;
+}
+.main-heading span {
+  color: var(--typora-primary-color);
+}
+.middle-bold {
+  padding-bottom: 1rem;
+  font-weight: bold;
+}
+.middle-bold span {
+  color: var(--typora-primary-color);
+}
+
+@media only screen and (max-width: 800px) {
+  .landing-main-container {
+    margin: 2rem auto;
+    width: 60%;
+    height: auto;
+  }
+  .landing-main-information {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: left;
+    padding-right: 0;
+    padding-left: 1rem;
+  }
+  .main-heading {
+    padding-left: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  .middle-bold {
+    padding-top: 1rem;
+    font-size: 0.8rem;
+    text-align: left;
+  }
+
+  .middle-content {
+    text-align: left;
+    padding: 0 0 1rem 0.5rem;
+  }
+
+  .typora-hero img {
+    max-width: 200px;
+  }
+}
