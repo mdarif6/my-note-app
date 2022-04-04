@@ -101,6 +101,7 @@ body {
 .search-box-container {
   width: 100%;
 }
+
 .search-box {
   display: flex;
   align-items: center;
@@ -108,8 +109,13 @@ body {
   padding: 10px;
 }
 .search-input {
+  border: none;
   height: 2rem;
   width: 70%;
+}
+.search-button {
+  background-color: white;
+  border: none;
 }
 .search-button > i {
   display: flex;
@@ -143,7 +149,7 @@ body {
   padding: 0 0.5rem;
   background-color: var(--typora-white-color);
   flex-grow: 1;
-  height: 3rem;
+  /* min-height: 3rem; */
   border: hidden;
 }
 .note-title,
@@ -173,6 +179,19 @@ body {
   display: flex;
   gap: 2rem;
 }
+.note-label-op {
+  width: fit-content;
+  border: none;
+}
+.adding-btn {
+  color: var(--typora-primary-color);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.adding-btn:hover {
+  cursor: pointer;
+}
+
 .note-lower-icons i:hover {
   cursor: pointer;
 }

@@ -6,7 +6,7 @@ import LabelPage from "./pages/label-page/LabelPage";
 import LandingPage from "./pages/ladnding-page/LandingPage";
 import LoginPage from "./pages/login-page/LoginPage";
 import SignupPage from "./pages/signup-page/SignupPage";
-import { Rout, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import TrashPage from "./pages/trash-page/TrashPage";
 
 function App() {
