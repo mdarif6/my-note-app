@@ -46,10 +46,27 @@ body {
   gap: 2rem;
 }
 
-.btn-primary {
+.btn-primary,
+.outline-primary {
   width: 100%;
 }
 .login-bottom-text a,
 .login-check a {
   text-decoration: none;
+}
+@media only screen and (max-width: 800px) {
+  .login-check {
+    flex-direction: column;
+  }
+  .t-input-text label {
+    padding-bottom: 1rem;
+  }
+  .t-input-text input {
+    font-size: 0.5rem;
+  }
+  .login-check-label {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 }

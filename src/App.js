@@ -8,6 +8,7 @@ import LoginPage from "./pages/login-page/LoginPage";
 import SignupPage from "./pages/signup-page/SignupPage";
 import { Route, Routes } from "react-router-dom";
 import TrashPage from "./pages/trash-page/TrashPage";
+import Mockman from "mockman-js";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/trash" element={<TrashPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>
   );

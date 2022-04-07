@@ -7,6 +7,7 @@ import FilterLabel from "./FilterLabel";
 export default function Aside() {
   const { state, dispatch } = useNote();
   const [showFilter, setShowFilter] = useState(false);
+
   console.log(state.notes.id);
 
   const updatedLabel = [...state.notes, ...state.pinned].reduce((acc, curr) => {
@@ -24,16 +25,15 @@ export default function Aside() {
             <div>
               <i className="fas fa-home"></i>
             </div>
-            <Link to="/home">
-              <div className="link-active">Home</div>
-            </Link>
+
+            <div className="link-active">Home</div>
           </div>
 
           <div className="aside-content-label">
             <div>
               <i className="fas fa-tag"></i>
             </div>
-            <Link to="/label">
+            <Link className="link-style" to="/label">
               <div>Labels</div>
             </Link>
           </div>
@@ -42,7 +42,7 @@ export default function Aside() {
             <div>
               <i className="fas fa-archive"></i>
             </div>
-            <Link to="/archive">
+            <Link className="link-style" to="/archive">
               <div>Archive</div>
             </Link>
           </div>
@@ -50,7 +50,7 @@ export default function Aside() {
             <div>
               <i className="fas fa-trash"></i>
             </div>
-            <Link to="/trash">
+            <Link className="link-style" to="/trash">
               <div>Trash</div>
             </Link>
           </div>
@@ -58,7 +58,9 @@ export default function Aside() {
             <div>
               <i className="far fa-user-circle"></i>
             </div>
-            <div>Profile</div>
+            <Link className="link-style" to="/login">
+              <div>Profile</div>
+            </Link>
           </div>
         </div>
         <div className="join-button">
@@ -82,13 +84,32 @@ export default function Aside() {
                   Sort By
                 </label>
                 <div>
-                  <select className="select" name="time" id="time">
+                  <div>
+                    <input
+                      type="radio"
+                      name="time-radio"
+                      value="latest time"
+                      onChange={() => dispatch({ type: "LATEST_NOTE" })}
+                    />
+                    <label htmlFor="newest first">Newst First</label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="time-radio"
+                      value="oldest time"
+                      onChange={() => dispatch({ type: "OLDTEST_NOTE" })}
+                    />
+                    <label htmlFor="oldest first">Oldest First</label>
+                  </div>
+
+                  {/* <select className="select" name="time" id="time">
                     <option value="newst">Newest First</option>
                     <option value="oldest">Oldest First</option>
-                  </select>
+                  </select> */}
                 </div>
               </div>
-              <div className="filtering">
+              {/*  <div className="filtering">
                 <label className="lable-name" for="time">
                   Filter By
                 </label>
@@ -99,7 +120,7 @@ export default function Aside() {
                     <option value="low">Low</option>
                   </select>
                 </div>
-              </div>
+              </div> */}
               <div className="selection">
                 <label className="lable-name">Select Label</label>
 

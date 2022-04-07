@@ -1,16 +1,18 @@
 import React from "react";
+import { useNote } from "../../note-context";
 
 export default function ArchiveMain() {
+  const { state, dispatch } = useNote();
   return (
     <main className="typora-main">
-      {state.pinned.map((note) => (
-        <div className="typora-note" key={note.id}>
+      {state.archive.map((note) => (
+        <div
+          className="typora-note output-display"
+          key={note.id}
+          style={{ backgroundColor: state.color }}
+        >
           <div className="note-title-and-pin">
-            <textarea
-              className="note-title"
-              placeholder="Title"
-              value={note.title}
-            />
+            <div className="title-op">{note.title}</div>
             <div>
               <i
                 className="fas fa-thumbtack"
@@ -21,27 +23,35 @@ export default function ArchiveMain() {
               ></i>
             </div>
           </div>
-          <textarea
-            className="note-content"
-            placeholder="Content"
-            value={note.content}
-          />
+          <div className="content-op">{note.content}</div>
           <div className="note-lower-date-and-icons">
             <div className="note-date-icons">
               {new Date(note.date).getDate()}/
               {new Date(note.date).getUTCMonth() + 1}/
               {new Date(note.date).getFullYear()}
+              <small>
+                {new Date(note.date).getHours()}:
+                {new Date(note.date).getMinutes()}:
+                {new Date(note.date).getSeconds()}
+              </small>
             </div>
             <div className="note-lower-icons">
-              <input className="note-label-op" type="text" value={note.label} />
-              <i className="fas fa-palette"></i>
+              <div className="note-label-op"> {note.label}</div>
+              {/* <i className="fas fa-palette"></i> */}
               <i className="fas fa-tag"></i>
-              <i className="fas fa-archive"></i>
+              <i
+                className="fas fa-archive"
+                onClick={() => {
+                  dispatch({ type: "ADD_NOTES", payload: note });
+                  dispatch({ type: "DELETE_FROM_ARCHIVE", payload: note.id });
+                }}
+              ></i>
               <i
                 className="fas fa-trash-alt"
-                onClick={() =>
-                  dispatch({ type: "DELETE_NOTES", payload: note.id })
-                }
+                onClick={() => {
+                  dispatch({ type: "DELETE_FROM_ARCHIVE", payload: note.id });
+                  dispatch({ type: "ADD_TO_TRASH", payload: note });
+                }}
               ></i>
             </div>
           </div>

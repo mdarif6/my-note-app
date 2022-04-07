@@ -2,7 +2,7 @@ import React from "react";
 import { useNote } from "../../note-context";
 
 export default function FilterLabel({ item }) {
-  const { state, dispatch } = useNote();
+  const { dispatch } = useNote();
   return (
     <div key={item}>
       <input

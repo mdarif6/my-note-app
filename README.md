@@ -69,12 +69,48 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
 
+# type note is a note taking app.
+
+## Landing Page
+
+![Logo](/src/assets/images/hero.png)
+
+A note taking app on which we can -
+
+- note down our notes
+- archive them for future use
+- can give labels according to categories and filter then.
+- can pin our requierd notes
+- deletion is not direct, we can find notes in trash after deletion.
+
 # Screenshots
 
 ## Landing Page
 
-![Note App Landing Page Screenshot](/src/assets/images/landing_page_screenshot.JPG)
+![Note App Landing Page Screenshot](/src/assets/images/Landing_Page.JPG)
 
 ## Home Page
 
 ![Note App Home Page Screenshot](/src/assets/images/home_page_screenshot.JPG)
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/mdarif6/my-note-app.git
+```
+
+Go to the project directory
+
+```bash
+  cd my-note-app
+```
+
+Start the server
+
+```bash
+
+```
+
+- [@ MdArif](https://github.com/mdarif6/)
