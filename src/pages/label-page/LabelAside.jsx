@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function LabelAside() {
   return (
     <aside className="typora-aside">
@@ -9,7 +9,9 @@ export default function LabelAside() {
             <div>
               <i className="fas fa-home"></i>
             </div>
-            <div>Home</div>
+            <Link className="link-style" to="/home">
+              <div>Home</div>
+            </Link>
           </div>
 
           <div className="aside-content-label">
@@ -23,13 +25,17 @@ export default function LabelAside() {
             <div>
               <i className="fas fa-archive"></i>
             </div>
-            <div>Archive</div>
+            <Link className="link-style" to="/archive">
+              <div>Archive</div>
+            </Link>
           </div>
           <div className="aside-content-label">
             <div>
               <i className="fas fa-trash"></i>
             </div>
-            <div>Trash</div>
+            <Link className="link-style" to="/trash">
+              <div>Trash</div>
+            </Link>
           </div>
           <div className="aside-content-label">
             <div>

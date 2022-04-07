@@ -23,7 +23,7 @@ body {
   grid-row: 1/2;
 }
 .typora-aside {
-  min-height: 200px;
+  min-height: 500px;
   background-color: var(--typora-main-background-color);
   grid-column: 1/2;
   grid-row: 2/3;
@@ -38,8 +38,10 @@ body {
   grid-row: 3/4;
 }
 .typora-aside {
+  margin: 0 0.5rem 1rem 1rem;
   display: flex;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: left;
 }
 .typora-aside-content {
   display: flex;
@@ -80,7 +82,9 @@ body {
   font-size: x-large;
   color: var(--typora-white-color);
 }
-
+.link-style {
+  text-decoration: none;
+}
 .typora-logo {
   font-weight: bold;
   text-align: left;
@@ -93,7 +97,7 @@ body {
 .typora-main {
   padding: 1rem;
   gap: 1rem;
-
+  margin: 0 1rem 1rem 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,6 +113,9 @@ body {
   padding: 10px;
 }
 .search-input {
+  border-radius: 0.3rem;
+  /* padding-left: 1rem; */
+  padding: 0 1rem;
   border: none;
   height: 2rem;
   width: 70%;
@@ -138,20 +145,49 @@ body {
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
-
-  border: 1px solid black;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 1rem;
+}
+.output-display {
+  max-width: 450px;
+  overflow-wrap: break-word;
+}
+.content-op,
+.title-op {
+  padding: 1rem;
+  display: inline-block;
+  max-width: 100%;
+}
+.output-display .note-label-op {
+  display: inline-block;
+  width: 100px;
+}
+.content-op {
+  text-align: left;
 }
 .note-title-and-pin {
   display: flex;
 }
 .note-title,
 .note-content {
-  padding: 0 0.5rem;
+  padding: 0.5rem;
   background-color: var(--typora-white-color);
   flex-grow: 1;
-  /* min-height: 3rem; */
   border: hidden;
 }
+.note-content {
+  max-width: 90%;
+}
+
+/* .note-title-and-pin div,
+.note-content,
+.note-lower-date-and-icons div,
+input,
+button {
+  display: none;
+} */
+
 .note-title,
 .note-content:focus {
   outline: none;
@@ -166,6 +202,10 @@ body {
 }
 .note-title-and-pin i:hover {
   cursor: pointer;
+}
+
+.note-date-icons small {
+  padding: 0 0.5rem;
 }
 .note-lower-date-and-icons {
   opacity: 0.5;
@@ -186,7 +226,7 @@ body {
 .adding-btn {
   color: var(--typora-primary-color);
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 .adding-btn:hover {
   cursor: pointer;
@@ -266,11 +306,13 @@ input.select-input {
     grid-row: 1/2;
   }
   .typora-aside {
+    margin: 0;
     grid-column: 1/2;
     grid-row: 2/3;
     margin-bottom: 0.5rem;
   }
   .typora-main {
+    margin: 0;
     grid-column: 1/2;
     grid-row: 3/4;
   }

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function ArchiveAside() {
   return (
     <aside className="typora-aside">
@@ -9,14 +9,18 @@ export default function ArchiveAside() {
             <div>
               <i className="fas fa-home"></i>
             </div>
-            <div>Home</div>
+            <Link className="link-style" to="/home">
+              <div>Home</div>
+            </Link>
           </div>
 
           <div className="aside-content-label">
             <div>
               <i className="fas fa-tag"></i>
             </div>
-            <div>Labels</div>
+            <Link className="link-style" to="/label">
+              <div>Labels</div>
+            </Link>
           </div>
 
           <div className="aside-content-label">
@@ -29,7 +33,9 @@ export default function ArchiveAside() {
             <div>
               <i className="fas fa-trash"></i>
             </div>
-            <div>Trash</div>
+            <Link className="link-style" to="/trash">
+              <div>Trash</div>
+            </Link>
           </div>
           <div className="aside-content-label">
             <div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./SignupPage.css";
 export default function SignupMain() {
   return (
@@ -40,9 +41,9 @@ export default function SignupMain() {
               <button className="btn btn-primary">Create New Account</button>
             </a>
             <div className="login-bottom-text">
-              <a href="#">
+              <Link to="/login">
                 Already have an account <i className="fas fa-chevron-right"></i>
-              </a>
+              </Link>
             </div>
           </form>
         </div>

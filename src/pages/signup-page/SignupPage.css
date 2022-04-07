@@ -53,3 +53,15 @@ body {
 .login-check a {
   text-decoration: none;
 }
+@media only screen and (max-width: 800px) {
+  .login-check {
+    flex-direction: column;
+  }
+  .t-input-text label {
+    padding-bottom: 1rem;
+  }
+
+  .login-check-label {
+    margin: 1rem;
+  }
+}

@@ -7,6 +7,8 @@ const initialState = {
   notes: [],
   pinned: [],
   archive: [],
+  trash: [],
+  sortByTime: "",
   filterByLabel: [],
 };
 
@@ -32,9 +34,31 @@ function noteReducer(state, action) {
 
     case "ADD_TO_PIN":
       return { ...state, pinned: [...state.pinned, action.payload] };
+    case "DELETE_FROM_PIN":
+      const updatedPinned = state.pinned.filter(
+        (item) => item.id !== action.payload
+      );
+      return { ...state, pinned: updatedPinned };
     case "ADD_TO_ARCHIVE":
       return { ...state, archive: [...state.archive, action.payload] };
-
+    case "DELETE_FROM_ARCHIVE":
+      const updatedArchive = state.archive.filter(
+        (item) => item.id !== action.payload
+      );
+      return { ...state, archive: updatedArchive };
+    case "ADD_TO_TRASH":
+      return { ...state, trash: [...state.trash, action.payload] };
+    case "DELETE_FROM_TRASH":
+      const updatedTrash = state.trash.filter(
+        (item) => item.id !== action.payload
+      );
+      return { ...state, trash: updatedTrash };
+    // case "COLOR":
+    //   return { ...state, color: action.payload };
+    case "LATEST_NOTE":
+      return { ...state, sortByTime: action.type };
+    case "OLDTEST_NOTE":
+      return { ...state, sortByTime: action.type };
     case "FILTER_LABEL":
       return {
         ...state,
