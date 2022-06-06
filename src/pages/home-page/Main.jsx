@@ -2,6 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { useNote } from "../../note-context";
 import { v4 as uuid } from "uuid";
+import axios from "axios";
+import { useEffect } from "react";
+import NoteCard from "./NoteCard";
+import PinCard from "./PinCard";
 
 export default function Main() {
   const [title, setTitle] = useState("");
@@ -9,16 +13,71 @@ export default function Main() {
   const [label, setLabel] = useState("");
   const { state, dispatch } = useNote();
   const [showNote, setShowNote] = useState(false);
-  const [color, setColor] = useState("#ffffff");
   const [search, setSearch] = useState("");
+  const [color, setColor] = useState("#ffffff");
 
-  function clickHandler() {
+  useEffect(() => {
+    (async function displayNotes() {
+      let token = localStorage.getItem("authToken");
+      try {
+        const response = await axios.get("/api/notes", {
+          headers: {
+            authorization: token,
+          },
+        });
+
+        if (response.status === 200) {
+          dispatch({ type: "ADD_NOTES", payload: response.data.notes });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+
+  async function clickHandler() {
+    let token = localStorage.getItem("authToken");
     if (title.length > 0 && content.length > 0) {
-      dispatch({
-        type: "ADD_NOTES",
-        payload: { id: uuid(), title, content, color, label, date: new Date() },
-      });
-      dispatch({ type: "ADD_LABEL" });
+      // dispatch({
+      //   type: "ADD_NOTES",
+      //   payload: { id: uuid(), title, content, color, label, date: new Date() },
+      // });
+      // dispatch({ type: "ADD_LABEL" });
+      try {
+        const response = await axios.post(
+          "/api/notes",
+          {
+            note: { title, content, color, label, date: new Date() },
+          },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+
+        if (response.status === 201) {
+          (async function showAddedNotes() {
+            let token = localStorage.getItem("authToken");
+            try {
+              const response = await axios.get("/api/notes", {
+                headers: {
+                  authorization: token,
+                },
+              });
+
+              if (response.status === 200) {
+                dispatch({ type: "ADD_NOTES", payload: response.data.notes });
+              }
+            } catch (error) {
+              console.log(error);
+            }
+          })();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
       setTitle("");
       setContent("");
       setLabel("");
@@ -26,6 +85,25 @@ export default function Main() {
       alert("title and content fields are required");
     }
   }
+
+  // async function clickHandler() {
+  //   let token = localStorage.getItem("authToken");
+  //   try {
+  //     const response = await axios.post(
+  //       "/api/notes",
+  //       {
+  //         note: note,
+  //       },
+  //       {
+  //         headers: {
+  //           authorzation: token,
+  //         },
+  //       }
+  //     );
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
   const combinedTime = [...state.notes, ...state.pinned];
   function sortingByTime(combinedTime, sort) {
     if (sort === "LATEST_NOTE") {
@@ -57,7 +135,13 @@ export default function Main() {
     });
   }
 
-  const setByTime = sortingByTime(state.notes, state.sortByTime);
+  function updatedPinNotes(notes, pinned) {
+    return notes.filter((item) => {
+      return !pinned.some((ele) => ele._id === item._id);
+    });
+  }
+  const setByPinned = updatedPinNotes(state.notes, state.pinned);
+  const setByTime = sortingByTime(setByPinned, state.sortByTime);
   const setByLabel = sortByLabel(setByTime, state.filterByLabel);
   const setBySearch = searchingNote(setByLabel, search);
 
@@ -89,9 +173,7 @@ export default function Main() {
             }}
             onClick={() => setShowNote(!showNote)}
           />
-          <div>
-            <i className="fas fa-thumbtack"></i>
-          </div>
+          <div>{/* <i className="fas fa-thumbtack"></i> */}</div>
         </div>
         <textarea
           className="note-content"
@@ -120,130 +202,19 @@ export default function Main() {
         </div>
       </div>
 
-      {setBySearch.map((note) => (
-        <div
-          className="typora-note output-display"
-          key={note.id}
-          style={{ backgroundColor: note.color }}
-        >
-          <div className="note-title-and-pin">
-            <div className="title-op">{note.title}</div>
-            <div>
-              <i
-                className="fas fa-thumbtack"
-                onClick={() => {
-                  dispatch({ type: "ADD_TO_PIN", payload: note });
-                  dispatch({ type: "DELETE_NOTES", payload: note.id });
-                }}
-              ></i>
-            </div>
-          </div>
-
-          <div className="content-op">{note.content}</div>
-
-          <div className="note-lower-date-and-icons">
-            <div className="note-date-icons">
-              {new Date(note.date).getDate()}/
-              {new Date(note.date).getUTCMonth() + 1}/
-              {new Date(note.date).getFullYear()}
-              <small>
-                {new Date(note.date).getHours()}:
-                {String(new Date(note.date).getMinutes()).padStart(2, "0")}:
-                {String(new Date(note.date).getSeconds()).padStart(2, "0")}
-              </small>
-            </div>
-
-            <div className="note-lower-icons">
-              <div className="note-label-op"> {note.label}</div>
-              <input
-                type="color"
-                value={color}
-                onChange={(e) => {
-                  setColor(e.target.value);
-                  dispatch({ type: "COLOR", payload: color });
-                }}
-              />
-              {/* <i className="fas fa-palette"></i> */}
-              <i className="fas fa-tag"></i>
-              <i
-                className="fas fa-archive"
-                onClick={() => {
-                  dispatch({ type: "DELETE_NOTES", payload: note.id });
-                  dispatch({ type: "ADD_TO_ARCHIVE", payload: note });
-                }}
-              ></i>
-              <i
-                className="fas fa-trash-alt"
-                onClick={() => {
-                  dispatch({ type: "DELETE_NOTES", payload: note.id });
-                  dispatch({ type: "ADD_TO_TRASH", payload: note });
-                }}
-              ></i>
-            </div>
-          </div>
-        </div>
-      ))}
+      {setBySearch.map((note) => {
+        // if (state.pinned.some((ele) => ele._id === note._id)) {
+        //   return null;
+        // } else {
+        return <NoteCard note={note} key={note._id} />;
+        // }
+      })}
 
       {/* pin */}
 
       <div id="note-category">PINNED</div>
       {state.pinned.map((note) => (
-        <div
-          className="typora-note output-display"
-          key={note.id}
-          style={{ backgroundColor: state.color }}
-        >
-          <div className="note-title-and-pin">
-            {/* <textarea
-              className="note-title"
-              placeholder="Title"
-              value={note.title}
-            /> */}
-            <div className="title-op">{note.title}</div>
-            <div>
-              <i
-                className="fas fa-thumbtack"
-                onClick={() => {
-                  dispatch({ type: "REMOVE_FROM_PINNED", payload: note.id });
-                  dispatch({ type: "ADD_NOTES", payload: note });
-                }}
-              ></i>
-            </div>
-          </div>
-          {/* <textarea
-            className="note-content"
-            placeholder="Content"
-            value={note.content}
-          /> */}
-          <div className="content-op">{note.content}</div>
-          <div className="note-lower-date-and-icons">
-            <div className="note-date-icons">
-              {new Date(note.date).getDate()}/
-              {new Date(note.date).getUTCMonth() + 1}/
-              {new Date(note.date).getFullYear()}
-              <small>
-                {new Date(note.date).getHours()}:
-                {new Date(note.date).getMinutes()}:
-                {new Date(note.date).getSeconds()}
-              </small>
-            </div>
-            <div className="note-lower-icons">
-              <div className="note-label-op"> {note.label}</div>
-              {/* <input className="note-label-op" type="text" value={note.label} /> */}
-
-              {/* <i className="fas fa-palette"></i> */}
-              <i className="fas fa-tag"></i>
-              <i className="fas fa-archive"></i>
-              <i
-                className="fas fa-trash-alt"
-                onClick={() => {
-                  dispatch({ type: "DELETE_FROM_PIN", payload: note.id });
-                  dispatch({ type: "ADD_TO_TRASH", payload: note });
-                }}
-              ></i>
-            </div>
-          </div>
-        </div>
+        <PinCard note={note} key={note._id} />
       ))}
     </main>
   );

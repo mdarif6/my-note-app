@@ -9,7 +9,7 @@ const initialState = {
 };
 
 function authReducer(state, action) {
-  switch (key) {
+  switch (action.type) {
     case "SET_AUTH":
       return { ...state, isAuthenticated: action.payload };
     case "LOGIN":

@@ -1,6 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../auth-context";
 export default function LabelAside() {
+  const { state, dispatch } = useAuth();
+
+  function logoutHandler() {
+    localStorage.removeItem("authToken");
+    dispatch({ type: "SET_AUTH", payload: false });
+  }
   return (
     <aside className="typora-aside">
       <div className="aside-content-wraper">
@@ -37,14 +44,25 @@ export default function LabelAside() {
               <div>Trash</div>
             </Link>
           </div>
-          <div className="aside-content-label">
-            <div>
-              <i className="far fa-user-circle"></i>
+          {state.isAuthenticated ? (
+            <div className="aside-content-label">
+              <div className="typora-logout-btn" onClick={logoutHandler}>
+                <i className="fas fa-power-off"></i>
+                <div>Logout</div>
+              </div>
             </div>
-            <div>Profile</div>
-          </div>
+          ) : (
+            <div className="aside-content-label">
+              <div>
+                <i className="far fa-user-circle"></i>
+              </div>
+              <Link className="link-style" to="/login">
+                <div>Login</div>
+              </Link>
+            </div>
+          )}
         </div>
-        <div className="join-button">
+        {/* <div className="join-button">
           <button className="btn btn-primary">Create New Notes</button>
         </div>
         <div className="typora-sorting-container">
@@ -116,7 +134,7 @@ export default function LabelAside() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </aside>
   );

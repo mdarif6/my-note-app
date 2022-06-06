@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { NoteProvider, useNote } from "../../note-context";
 import FilterLabel from "./FilterLabel";
+import { useAuth } from "../../auth-context";
 
 export default function Aside() {
   const { state, dispatch } = useNote();
+  const { state: authState, dispatch: authDispatch } = useAuth();
   const [showFilter, setShowFilter] = useState(false);
-
-  console.log(state.notes.id);
 
   const updatedLabel = [...state.notes, ...state.pinned].reduce((acc, curr) => {
     if (acc.indexOf(curr.label) === -1) {
@@ -16,6 +16,11 @@ export default function Aside() {
     }
     return acc;
   }, []);
+
+  function logoutHandler() {
+    localStorage.removeItem("authToken");
+    authDispatch({ type: "SET_AUTH", payload: false });
+  }
 
   return (
     <aside className="typora-aside">
@@ -54,18 +59,37 @@ export default function Aside() {
               <div>Trash</div>
             </Link>
           </div>
-          <div className="aside-content-label">
+
+          {authState.isAuthenticated ? (
+            <div className="aside-content-label">
+              <div className="typora-logout-btn" onClick={logoutHandler}>
+                <i className="fas fa-power-off"></i>
+                <div>Logout</div>
+              </div>
+            </div>
+          ) : (
+            <div className="aside-content-label">
+              <div>
+                <i className="far fa-user-circle"></i>
+              </div>
+              <Link className="link-style" to="/login">
+                <div>Login</div>
+              </Link>
+            </div>
+          )}
+        </div>
+        {/* <div className="aside-content-label">
             <div>
               <i className="far fa-user-circle"></i>
             </div>
             <Link className="link-style" to="/login">
               <div>Profile</div>
             </Link>
-          </div>
-        </div>
-        <div className="join-button">
+          </div> */}
+
+        {/* <div className="join-button">
           <button className="btn btn-primary">Create New Notes</button>
-        </div>
+        </div> */}
 
         <div className="typora-sorting-container">
           <div className="sorting-heading">

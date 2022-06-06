@@ -8,14 +8,13 @@ export default function LoginMain() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { dispatch } = useAuth;
+  const { dispatch } = useAuth();
 
   async function submitHandler(e) {
     e.preventDefault();
-    console.log(email, password);
+
     try {
       const response = await axios.post("/api/auth/login", { email, password });
-      console.log(response);
 
       // if (e.target.innerText === "Login as Guest") {
       //   localStorage.setItem(
@@ -31,26 +30,26 @@ export default function LoginMain() {
 
       if (response.status === 200 || response.status === 201) {
         localStorage.setItem("authToken", response.data.encodedToken);
-        navigate("/home");
         dispatch({ type: "SET_AUTH", payload: true });
+        navigate("/home");
       }
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function loginAsGuest() {
+  async function loginAsGuest(e) {
+    e.preventDefault();
     try {
       const response = await axios.post("/api/auth/login", {
         email: "adarshbalika@gmail.com",
         password: "adarshBalika123",
       });
-      console.log(response);
 
       if (response.status === 200 || response.status === 201) {
         localStorage.setItem("authToken", response.data.encodedToken);
-        navigate("/home");
         dispatch({ type: "SET_AUTH", payload: true });
+        navigate("/home");
       }
     } catch (error) {
       console.log(error);
@@ -84,7 +83,7 @@ export default function LoginMain() {
               </div>
             </div>
 
-            <div className="login-check">
+            {/* <div className="login-check">
               <div className="login-check-label">
                 <input
                   type="checkbox"
@@ -97,7 +96,7 @@ export default function LoginMain() {
               <div>
                 <a href="#">Forgot Your Password ?</a>
               </div>
-            </div>
+            </div> */}
             <a href="#">
               <button className="btn btn-primary">Login</button>
             </a>

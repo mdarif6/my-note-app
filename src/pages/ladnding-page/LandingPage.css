@@ -40,6 +40,7 @@ body {
   padding-right: 5rem;
 }
 .main-heading {
+  padding-left: 1rem;
   font-weight: bold;
   font-size: 2rem;
 }
@@ -50,10 +51,29 @@ body {
   padding-bottom: 1rem;
   font-weight: bold;
 }
+
+.middle-bold {
+  padding-top: 1rem;
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.middle-content {
+  text-align: left;
+  padding: 0 0 1rem 0.5rem;
+}
+
 .middle-bold span {
   color: var(--typora-primary-color);
 }
 
+.lower-content {
+  padding-right: 1rem;
+}
+
+.typora-login-link {
+  padding-left: 1rem;
+}
 @media only screen and (max-width: 800px) {
   .landing-main-container {
     margin: 2rem auto;

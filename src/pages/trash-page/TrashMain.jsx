@@ -1,26 +1,102 @@
+import axios from "axios";
 import React from "react";
+import { useEffect } from "react";
 import { useNote } from "../../note-context";
 
 export default function TrashMain() {
   const { state, dispatch } = useNote();
+
+  useEffect(() => {
+    (async function showTrashedNote() {
+      let token = localStorage.getItem("authToken");
+      try {
+        const response = await axios.get("/api/trash", {
+          headers: {
+            authorization: token,
+          },
+        });
+
+        if (response.status === 200) {
+          dispatch({ type: "ADD_TO_TRASH", payload: response.data.trash });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+
+  async function restoreTrashedHandler(note) {
+    let token = localStorage.getItem("authToken");
+    try {
+      const response = await axios.post(
+        `/api/trash/restore/${note._id}`,
+        {},
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+
+      if (response.status === 200 || response.status === 201) {
+        const responseTwo = await axios.get("/api/trash", {
+          headers: {
+            authorization: token,
+          },
+        });
+
+        if (responseTwo.status === 200) {
+          dispatch({ type: "ADD_TO_TRASH", payload: responseTwo.data.trash });
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function deleteTrashHandler(note) {
+    let token = localStorage.getItem("authToken");
+    try {
+      const response = await axios.delete(`/api/trash/delete/${note._id}`, {
+        headers: {
+          authorization: token,
+        },
+      });
+
+      if (response.status === 200 || response.status === 201) {
+        const responseTwo = await axios.get("/api/trash", {
+          headers: {
+            authorization: token,
+          },
+        });
+
+        if (responseTwo.status === 200) {
+          dispatch({ type: "ADD_TO_TRASH", payload: responseTwo.data.trash });
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <main className="typora-main">
       {state.trash.map((note) => (
         <div
           className="typora-note output-display"
-          key={note.id}
-          style={{ backgroundColor: state.color }}
+          key={note._id}
+          style={{ backgroundColor: note.color }}
         >
           <div className="note-title-and-pin">
             <div className="title-op">{note.title}</div>
             <div>
-              <i
+              {/* <i
                 className="fas fa-thumbtack"
                 onClick={() => {
                   dispatch({ type: "ADD_TO_PIN", payload: note });
                   dispatch({ type: "DELETE_NOTES", payload: note.id });
                 }}
-              ></i>
+              ></i> */}
             </div>
           </div>
 
@@ -39,81 +115,31 @@ export default function TrashMain() {
             <div className="note-lower-icons">
               <div className="note-label-op"> {note.label}</div>
               {/* <i className="fas fa-palette"></i> */}
-              <i className="fas fa-tag"></i>
-              <i
+              {/* <i className="fas fa-tag"></i> */}
+              {/* <i
                 className="fas fa-archive"
                 onClick={() => {
                   dispatch({ type: "DELETE_NOTES", payload: note.id });
                   dispatch({ type: "ADD_TO_ARCHIVE", payload: note });
                 }}
+              ></i> */}
+              <i
+                className="fa-solid fa-trash-arrow-up"
+                onClick={() => restoreTrashedHandler(note)}
               ></i>
+
               <i
                 className="fas fa-trash-alt"
-                onClick={() => {
-                  dispatch({ type: "DELETE_FROM_TRASH", payload: note.id });
-                }}
+                // onClick={() => {
+                //   dispatch({ type: "DELETE_FROM_TRASH", payload: note.id });
+                // }}
+
+                onClick={() => deleteTrashHandler(note)}
               ></i>
             </div>
           </div>
         </div>
       ))}
-
-      {/* <div id="note-category">PINNED</div> */}
-      {/* <div className="typora-note">
-        <div className="note-title-and-pin">
-          <input className="note-title" type="text" placeholder="Title" />
-          <div>
-            <i className="fas fa-thumbtack"></i>
-          </div>
-        </div>
-        <input className="note-content" type="text" placeholder="Content" />
-        <div className="note-lower-date-and-icons">
-          <div className="note-date-icons">Date</div>
-          <div className="note-lower-icons">
-            <i className="fas fa-palette"></i>
-            <i className="fas fa-tag"></i>
-            <i className="fas fa-archive"></i>
-            <i className="fas fa-trash-alt"></i>
-          </div>
-        </div>
-      </div>
-      <div className="typora-note">
-        <div className="note-title-and-pin">
-          <input className="note-title" type="text" placeholder="Title" />
-          <div>
-            <i className="fas fa-thumbtack"></i>
-          </div>
-        </div>
-        <input className="note-content" type="text" placeholder="Content" />
-        <div className="note-lower-date-and-icons">
-          <div className="note-date-icons">Date</div>
-          <div className="note-lower-icons">
-            <i className="fas fa-palette"></i>
-            <i className="fas fa-tag"></i>
-            <i className="fas fa-archive"></i>
-            <i className="fas fa-trash-alt"></i>
-          </div>
-        </div>
-      </div>
-      <div>OTHERS</div>
-      <div className="typora-note">
-        <div className="note-title-and-pin">
-          <input className="note-title" type="text" placeholder="Title" />
-          <div>
-            <i className="fas fa-thumbtack"></i>
-          </div>
-        </div>
-        <input className="note-content" type="text" placeholder="Content" />
-        <div className="note-lower-date-and-icons">
-          <div className="note-date-icons">Date</div>
-          <div className="note-lower-icons">
-            <i className="fas fa-palette"></i>
-            <i className="fas fa-tag"></i>
-            <i className="fas fa-archive"></i>
-            <i className="fas fa-trash-alt"></i>
-          </div>
-        </div>
-      </div> */}
     </main>
   );
 }
