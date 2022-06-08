@@ -46,18 +46,21 @@ $ npm start
 - React Router v6
 - React Context API + useReducer
 - Vanilla CSS integrated with [Panda UI](https://pandaui.netlify.app/) Component Library
-<!-- - Git For Version Control -->
+- Git For Version Control
 - Netlify for Deployment
-<!-- - React Player -->
 
 # Screenshots
 
-## Landing Page
+![Note App Landing Page Screenshot](/src/assets/images/screen1.JPG)
 
-![Note App Landing Page Screenshot](/src/assets/images/Landing_Page.JPG)
+![Note App Home Page Screenshot](/src/assets/images/screen2.JPG)
 
-## Home Page
+![Note App Home Page Screenshot](/src/assets/images/screen3.JPG)
 
-![Note App Home Page Screenshot](/src/assets/images/home_page_screenshot.JPG)
+![Note App Home Page Screenshot](/src/assets/images/screen4.JPG)
+
+![Note App Home Page Screenshot](/src/assets/images/screen5.JPG)
+
+![Note App Home Page Screenshot](/src/assets/images/screen6.JPG)
 
 - [@ MdArif](https://github.com/mdarif6/)
