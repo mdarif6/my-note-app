@@ -1,6 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../auth-context";
 export default function ArchiveAside() {
+  const { state, dispatch } = useAuth();
+
+  function logoutHandler() {
+    localStorage.removeItem("authToken");
+    dispatch({ type: "SET_AUTH", payload: false });
+  }
   return (
     <aside className="typora-aside">
       <div className="aside-content-wraper">
@@ -37,85 +44,24 @@ export default function ArchiveAside() {
               <div>Trash</div>
             </Link>
           </div>
-          <div className="aside-content-label">
-            <div>
-              <i className="far fa-user-circle"></i>
+
+          {state.isAuthenticated ? (
+            <div className="aside-content-label">
+              <div className="typora-logout-btn" onClick={logoutHandler}>
+                <i className="fas fa-power-off"></i>
+                <div>Logout</div>
+              </div>
             </div>
-            <div>Profile</div>
-          </div>
-        </div>
-        <div className="join-button">
-          <button className="btn btn-primary">Create New Notes</button>
-        </div>
-        <div className="typora-sorting-container">
-          <div className="sorting-heading">
-            Sort & Filter Notes
-            <i id="drop-down" className="fas fa-chevron-circle-down"></i>
-          </div>
-          <div className="blank-div"></div>
-          <div className="to-show-all-sorting">
-            <div className="sorting">
-              <label className="lable-name" for="time">
-                Sort By
-              </label>
+          ) : (
+            <div className="aside-content-label">
               <div>
-                <select className="select" name="time" id="time">
-                  <option value="newst">Newest First</option>
-                  <option value="oldest">Oldest First</option>
-                </select>
+                <i className="far fa-user-circle"></i>
               </div>
+              <Link className="link-style" to="/login">
+                <div>Login</div>
+              </Link>
             </div>
-            <div className="filtering">
-              <label className="lable-name" for="time">
-                Filter By
-              </label>
-              <div>
-                <select className="select" name="priority" id="priority">
-                  <option value="high">High</option>
-                  <option value="medium">Medium</option>
-                  <option value="low">Low</option>
-                </select>
-              </div>
-            </div>
-            <div className="selection">
-              <label className="lable-name">Select Label</label>
-              <div className="select-checkbox">
-                <div>
-                  <input
-                    className="select-input"
-                    type="checkbox"
-                    name="label1"
-                    value="Bike"
-                  />
-                  <label className="lable-name" for="label1">
-                    Label 1
-                  </label>
-                </div>
-                <div>
-                  <input
-                    className="select-input"
-                    type="checkbox"
-                    name="label2"
-                    value="Car"
-                  />
-                  <label className="lable-name" for="label2">
-                    Label 2
-                  </label>
-                </div>
-                <div>
-                  <input
-                    className="select-input"
-                    type="checkbox"
-                    name="lable3"
-                    value="Boat"
-                  />
-                  <label className="lable-name" for="lable3">
-                    Label 3
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </aside>

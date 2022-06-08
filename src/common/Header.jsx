@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <header class="typora-header">
-      <Link className="link-style" to="/home">
-        <div class="typora-logo">
+    <header className="typora-header">
+      <Link className="link-style" to="/">
+        <div className="typora-logo">
           type<span> note</span>
         </div>
       </Link>
