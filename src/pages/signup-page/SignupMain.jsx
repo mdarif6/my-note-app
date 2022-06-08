@@ -76,17 +76,6 @@ export default function SignupMain() {
               </div>
             </div>
 
-            {/* <div className="login-check">
-              <div className="login-check-label">
-                <input
-                  type="checkbox"
-                  name="consent"
-                  id="consent"
-                  value="remember"
-                />
-                <label for="consent">I accept all terms and conditions</label>
-              </div>
-            </div> */}
             <a href="#">
               <button className="btn btn-primary">Create New Account</button>
             </a>

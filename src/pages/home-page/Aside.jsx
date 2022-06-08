@@ -78,18 +78,6 @@ export default function Aside() {
             </div>
           )}
         </div>
-        {/* <div className="aside-content-label">
-            <div>
-              <i className="far fa-user-circle"></i>
-            </div>
-            <Link className="link-style" to="/login">
-              <div>Profile</div>
-            </Link>
-          </div> */}
-
-        {/* <div className="join-button">
-          <button className="btn btn-primary">Create New Notes</button>
-        </div> */}
 
         <div className="typora-sorting-container">
           <div className="sorting-heading">
@@ -126,25 +114,9 @@ export default function Aside() {
                     />
                     <label htmlFor="oldest first">Oldest First</label>
                   </div>
-
-                  {/* <select className="select" name="time" id="time">
-                    <option value="newst">Newest First</option>
-                    <option value="oldest">Oldest First</option>
-                  </select> */}
                 </div>
               </div>
-              {/*  <div className="filtering">
-                <label className="lable-name" for="time">
-                  Filter By
-                </label>
-                <div>
-                  <select className="select" name="priority" id="priority">
-                    <option value="high">High</option>
-                    <option value="medium">Medium</option>
-                    <option value="low">Low</option>
-                  </select>
-                </div>
-              </div> */}
+
               <div className="selection">
                 <label className="lable-name">Select Label</label>
 

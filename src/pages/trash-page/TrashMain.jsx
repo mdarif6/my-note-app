@@ -89,15 +89,7 @@ export default function TrashMain() {
         >
           <div className="note-title-and-pin">
             <div className="title-op">{note.title}</div>
-            <div>
-              {/* <i
-                className="fas fa-thumbtack"
-                onClick={() => {
-                  dispatch({ type: "ADD_TO_PIN", payload: note });
-                  dispatch({ type: "DELETE_NOTES", payload: note.id });
-                }}
-              ></i> */}
-            </div>
+            <div></div>
           </div>
 
           <div className="content-op">{note.content}</div>
@@ -114,15 +106,7 @@ export default function TrashMain() {
             </div>
             <div className="note-lower-icons">
               <div className="note-label-op"> {note.label}</div>
-              {/* <i className="fas fa-palette"></i> */}
-              {/* <i className="fas fa-tag"></i> */}
-              {/* <i
-                className="fas fa-archive"
-                onClick={() => {
-                  dispatch({ type: "DELETE_NOTES", payload: note.id });
-                  dispatch({ type: "ADD_TO_ARCHIVE", payload: note });
-                }}
-              ></i> */}
+
               <i
                 className="fa-solid fa-trash-arrow-up"
                 onClick={() => restoreTrashedHandler(note)}
@@ -130,10 +114,6 @@ export default function TrashMain() {
 
               <i
                 className="fas fa-trash-alt"
-                // onClick={() => {
-                //   dispatch({ type: "DELETE_FROM_TRASH", payload: note.id });
-                // }}
-
                 onClick={() => deleteTrashHandler(note)}
               ></i>
             </div>

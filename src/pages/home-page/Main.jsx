@@ -86,24 +86,6 @@ export default function Main() {
     }
   }
 
-  // async function clickHandler() {
-  //   let token = localStorage.getItem("authToken");
-  //   try {
-  //     const response = await axios.post(
-  //       "/api/notes",
-  //       {
-  //         note: note,
-  //       },
-  //       {
-  //         headers: {
-  //           authorzation: token,
-  //         },
-  //       }
-  //     );
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
   const combinedTime = [...state.notes, ...state.pinned];
   function sortingByTime(combinedTime, sort) {
     if (sort === "LATEST_NOTE") {
@@ -156,9 +138,6 @@ export default function Main() {
             placeholder="Search"
             onChange={(e) => setSearch(e.target.value)}
           />
-          {/* <button className="search-button">
-            <i class="fas fa-sliders-h"></i>
-          </button> */}
         </div>
       </div>
 
@@ -203,11 +182,7 @@ export default function Main() {
       </div>
 
       {setBySearch.map((note) => {
-        // if (state.pinned.some((ele) => ele._id === note._id)) {
-        //   return null;
-        // } else {
         return <NoteCard note={note} key={note._id} />;
-        // }
       })}
 
       {/* pin */}

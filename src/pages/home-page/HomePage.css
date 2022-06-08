@@ -156,7 +156,6 @@ body {
   padding: 1rem;
 }
 .output-display {
-  /* max-width: 450px; */
   overflow-wrap: break-word;
 }
 .content-op,
@@ -186,14 +185,6 @@ body {
 .note-content {
   max-width: 90%;
 }
-
-/* .note-title-and-pin div,
-.note-content,
-.note-lower-date-and-icons div,
-input,
-button {
-  display: none;
-} */
 
 .note-title,
 .note-content:focus {

@@ -4,29 +4,6 @@ import { useNote } from "../../note-context";
 export default function PinCard({ note }) {
   const { state, dispatch } = useNote();
 
-  // async function unpinHandler() {
-  //   let token = localStorage.getItem("authToken");
-  //   try {
-  //     const response = await axios.post(
-  //       "/api/notes",
-  //       {
-  //         note: note,
-  //       },
-  //       {
-  //         headers: {
-  //           authorization: token,
-  //         },
-  //       }
-  //     );
-
-  //     if (response.status === 201) {
-  //       dispatch({ type: "REMOVE_FROM_PINNED", payload: note._id });
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
   async function trashNoteFromPin(toTrashNote) {
     let token = localStorage.getItem("authToken");
     try {
@@ -78,13 +55,7 @@ export default function PinCard({ note }) {
           </div>
         ) : (
           <div>
-            <i
-              className="fas fa-thumbtack"
-              //   onClick={() => {
-              //     dispatch({ type: "REMOVE_FROM_PINNED", payload: note.id });
-              //     dispatch({ type: "ADD_NOTES", payload: note });
-              //   }}
-            ></i>
+            <i className="fas fa-thumbtack"></i>
           </div>
         )}
       </div>
@@ -102,18 +73,10 @@ export default function PinCard({ note }) {
         </div>
         <div className="note-lower-icons">
           <div className="note-label-op"> {note.label}</div>
-          {/* <input className="note-label-op" type="text" value={note.label} /> */}
 
-          {/* <i className="fas fa-palette"></i> */}
-          {/* <i className="fas fa-tag"></i> */}
           <i className="fas fa-archive"></i>
           <i
             className="fas fa-trash-alt"
-            // onClick={() => {
-            //   dispatch({ type: "DELETE_FROM_PIN", payload: note.id });
-            //   dispatch({ type: "ADD_TO_TRASH", payload: note });
-            // }}
-
             onClick={() => trashNoteFromPin(note)}
           ></i>
         </div>

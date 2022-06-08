@@ -16,18 +16,6 @@ export default function LoginMain() {
     try {
       const response = await axios.post("/api/auth/login", { email, password });
 
-      // if (e.target.innerText === "Login as Guest") {
-      //   localStorage.setItem(
-      //     "authToken",
-      //     JSON.stringify({
-      //       response: response.data.encodedToken,
-      //       user: response.data.foundUser,
-      //     })
-      //   );
-      //   navigate("/home");
-      //   dispatch({ type: "SET_AUTH", payload: true });
-      // }
-
       if (response.status === 200 || response.status === 201) {
         localStorage.setItem("authToken", response.data.encodedToken);
         dispatch({ type: "SET_AUTH", payload: true });
@@ -83,20 +71,6 @@ export default function LoginMain() {
               </div>
             </div>
 
-            {/* <div className="login-check">
-              <div className="login-check-label">
-                <input
-                  type="checkbox"
-                  name="consent"
-                  id="consent"
-                  value="remember"
-                />
-                <label for="consent">Remember me</label>
-              </div>
-              <div>
-                <a href="#">Forgot Your Password ?</a>
-              </div>
-            </div> */}
             <a href="#">
               <button className="btn btn-primary">Login</button>
             </a>

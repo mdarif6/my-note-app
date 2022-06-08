@@ -59,9 +59,6 @@ export default function NoteCard({ note }) {
         }
       );
 
-      // if (response.status === 200) {
-      //   dispatch({ type: "ADD_TO_TRASH", payload: response.data.trash });
-      // }
       if (response.status === 200 || response.status === 201) {
         const responseTwo = await axios.get("/api/notes", {
           headers: {
@@ -107,33 +104,6 @@ export default function NoteCard({ note }) {
       console.log(error);
     }
   }
-
-  // async function pinHandler() {
-  //   let token = localStorage.getItem("authToken");
-  //   try {
-  //     const response = await axios.post(
-  //       "/api/notes",
-  //       {
-  //         note: note,
-  //       },
-  //       {
-  //         headers: {
-  //           authorization: token,
-  //         },
-  //       }
-  //     );
-  //     console.log(response, "For pin note");
-  //     if (response.status === 201) {
-  //       if (note.some((item) => item._id !== response.data.notes._id)) {
-  //         dispatch({ type: "ADD_NOTES", payload: response.data.notes });
-  //       } else {
-  //         return;
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 
   return (
     <div
@@ -190,30 +160,15 @@ export default function NoteCard({ note }) {
           <input
             type="color"
             value={color}
-            onChange={
-              (e) => setColor(e.target.value)
-              // dispatch({ type: "COLOR", payload: color });
-            }
+            onChange={(e) => setColor(e.target.value)}
             onBlur={updateNoteHandler}
           />
-          {/* <i className="fas fa-palette"></i> */}
+
           <i className="fas fa-tag"></i>
 
-          <i
-            className="fas fa-archive"
-            // onClick={() => {
-            //   dispatch({ type: "DELETE_NOTES", payload: note.id });
-            //   dispatch({ type: "ADD_TO_ARCHIVE", payload: note });
-            // }}
-
-            onClick={() => archiveHandler()}
-          ></i>
+          <i className="fas fa-archive" onClick={() => archiveHandler()}></i>
           <i
             className="fas fa-trash-alt"
-            // onClick={() => {
-            //   dispatch({ type: "DELETE_NOTES", payload: note.id });
-            //   dispatch({ type: "ADD_TO_TRASH", payload: note });
-            // }}
             onClick={() => trashNoteHandler(note)}
           ></i>
         </div>
