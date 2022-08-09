@@ -27,9 +27,11 @@ export default function LandingPage() {
           </p>
         </div>
         <div className="lower-content">
-          <button className="btn btn-primary">Join Now</button>
-          <Link className="link-style" to="/home">
-            <p>Alredy have an account ?</p>
+          <Link className="link-style" to="/signup">
+            <button className="btn btn-primary">Join Now</button>
+          </Link>
+          <Link className="link-style" to="/login">
+            <p className="typora-login-link">Alredy have an account ?</p>
           </Link>
         </div>
       </div>

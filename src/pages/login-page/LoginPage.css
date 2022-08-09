@@ -49,6 +49,10 @@ body {
 .btn-primary,
 .outline-primary {
   width: 100%;
+  margin: 0rem;
+}
+.outline-primary {
+  margin-bottom: 1rem;
 }
 .login-bottom-text a,
 .login-check a {

@@ -8,19 +8,56 @@ import LoginPage from "./pages/login-page/LoginPage";
 import SignupPage from "./pages/signup-page/SignupPage";
 import { Route, Routes } from "react-router-dom";
 import TrashPage from "./pages/trash-page/TrashPage";
+import PrivateRoute from "./common/PrivateRoute";
+import { useEffect } from "react";
 import Mockman from "mockman-js";
+import { useAuth } from "./auth-context";
+import PageNotFound from "./pages/page-not-found/PageNotFound";
 
 function App() {
+  const { state, dispatch } = useAuth();
+  useEffect(() => {
+    if (localStorage.getItem("authToken")) {
+      dispatch({ type: "SET_AUTH", payload: true });
+    } else {
+      dispatch({ type: "SET_AUTH", payload: false });
+    }
+  }, []);
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/label" element={<LabelPage />} />
-        <Route path="/archive" element={<ArchivePage />} />
-        <Route path="/trash" element={<TrashPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="*" element={<PageNotFound />} />
+        <Route
+          path="/label"
+          element={
+            <PrivateRoute>
+              <LabelPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/archive"
+          element={
+            <PrivateRoute>
+              <ArchivePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/trash"
+          element={
+            <PrivateRoute>
+              <TrashPage />
+            </PrivateRoute>
+          }
+        />
+
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>
