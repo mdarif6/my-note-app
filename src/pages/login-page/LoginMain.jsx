@@ -72,7 +72,15 @@ export default function LoginMain() {
             </div>
 
             <a href="#">
-              <button className="btn btn-primary">Login</button>
+              <button
+                className={
+                  email === "" || password === ""
+                    ? "btn btn-primary disabled-btn"
+                    : "btn btn-primary"
+                }
+              >
+                Login
+              </button>
             </a>
             <a href="#">
               <button className="btn outline-primary" onClick={loginAsGuest}>

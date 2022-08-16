@@ -77,7 +77,17 @@ export default function SignupMain() {
             </div>
 
             <a href="#">
-              <button className="btn btn-primary">Create New Account</button>
+              <button
+                className={
+                  register.name === "" ||
+                  register.email === "" ||
+                  register.password === ""
+                    ? "btn btn-primary disabled-btn"
+                    : "btn btn-primary"
+                }
+              >
+                Create New Account
+              </button>
             </a>
             <div className="login-bottom-text">
               <Link to="/login">

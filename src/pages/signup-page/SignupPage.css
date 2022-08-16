@@ -28,6 +28,7 @@ body {
 }
 .t-input-text label {
   text-align: left;
+  padding: 0.5rem 0;
 }
 .t-input-text input {
   font-size: 1rem;

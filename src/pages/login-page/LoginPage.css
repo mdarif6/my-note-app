@@ -58,6 +58,10 @@ body {
 .login-check a {
   text-decoration: none;
 }
+.disabled-btn {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
 @media only screen and (max-width: 800px) {
   .login-check {
     flex-direction: column;
