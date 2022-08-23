@@ -111,4 +111,7 @@ body {
     display: flex;
     max-width: 200px;
   }
+  .lower-content {
+    padding-right: 0;
+  }
 }

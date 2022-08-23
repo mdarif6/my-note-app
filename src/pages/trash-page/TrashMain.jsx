@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useNote } from "../../note-context";
+import notavailable from "../../assets/images/not_available.svg";
 
 export default function TrashMain() {
   const { state, dispatch } = useNote();
@@ -81,45 +82,58 @@ export default function TrashMain() {
 
   return (
     <main className="typora-main">
-      {state.trash.map((note) => (
-        <div
-          className="typora-note output-display"
-          key={note._id}
-          style={{ backgroundColor: note.color }}
-        >
-          <div className="note-title-and-pin">
-            <div className="title-op">{note.title}</div>
-            <div></div>
-          </div>
+      <div className="page-title">Trashed Notes</div>
 
-          <div className="content-op">{note.content}</div>
-          <div className="note-lower-date-and-icons">
-            <div className="note-date-icons">
-              {new Date(note.date).getDate()}/
-              {new Date(note.date).getUTCMonth() + 1}/
-              {new Date(note.date).getFullYear()}
-              <small>
-                {new Date(note.date).getHours()}:
-                {new Date(note.date).getMinutes()}:
-                {new Date(note.date).getSeconds()}
-              </small>
+      {state.trash.length > 0 ? (
+        <>
+          {state.trash.map((note) => (
+            <div
+              className="typora-note output-display"
+              key={note._id}
+              style={{ backgroundColor: note.color }}
+            >
+              <div className="note-title-and-pin">
+                <div className="title-op">{note.title}</div>
+                <div></div>
+              </div>
+
+              <div className="content-op">{note.content}</div>
+              <div className="note-lower-date-and-icons">
+                <div className="note-date-icons">
+                  {new Date(note.date).getDate()}/
+                  {new Date(note.date).getUTCMonth() + 1}/
+                  {new Date(note.date).getFullYear()}
+                  <small>
+                    {new Date(note.date).getHours()}:
+                    {new Date(note.date).getMinutes()}:
+                    {new Date(note.date).getSeconds()}
+                  </small>
+                </div>
+                <div className="note-lower-icons">
+                  <div className="note-label-op"> {note.label}</div>
+
+                  <i
+                    className="fa-solid fa-trash-arrow-up"
+                    onClick={() => restoreTrashedHandler(note)}
+                  ></i>
+
+                  <i
+                    className="fas fa-trash-alt"
+                    onClick={() => deleteTrashHandler(note)}
+                  ></i>
+                </div>
+              </div>
             </div>
-            <div className="note-lower-icons">
-              <div className="note-label-op"> {note.label}</div>
-
-              <i
-                className="fa-solid fa-trash-arrow-up"
-                onClick={() => restoreTrashedHandler(note)}
-              ></i>
-
-              <i
-                className="fas fa-trash-alt"
-                onClick={() => deleteTrashHandler(note)}
-              ></i>
-            </div>
+          ))}
+        </>
+      ) : (
+        <div className="emptypage-message-wrapper">
+          <div className="notavailable-img">
+            <img src={notavailable} alt="not-available" />
           </div>
+          <div className="emptypage-message">No trash available !</div>
         </div>
-      ))}
+      )}
     </main>
   );
 }

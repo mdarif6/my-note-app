@@ -291,7 +291,20 @@ input.select-input {
   width: 1.5rem;
   height: 1.5rem;
 }
-
+.page-title {
+  color: var(--typora-primary-color);
+  font-weight: bold;
+}
+.emptypage-message-wrapper {
+  padding: 3rem 0 3rem 0;
+}
+.emptypage-message {
+  font-size: 1.5rem;
+  color: var(--typora-primary-color);
+}
+.notavailable-img img {
+  max-width: 200px;
+}
 @media only screen and (max-width: 800px) {
   .typora-container {
     display: grid;

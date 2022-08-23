@@ -79,11 +79,18 @@ export default function SignupMain() {
             <a href="#">
               <button
                 className={
-                  register.name === "" ||
-                  register.email === "" ||
-                  register.password === ""
-                    ? "btn btn-primary disabled-btn"
-                    : "btn btn-primary"
+                  register.name.length > 0 &&
+                  register.email.length > 0 &&
+                  register.password.length > 0
+                    ? "btn btn-primary "
+                    : "btn btn-primary disabled-btn"
+                }
+                disabled={
+                  register.name.length > 0 &&
+                  register.email.length > 0 &&
+                  register.password.length > 0
+                    ? false
+                    : true
                 }
               >
                 Create New Account

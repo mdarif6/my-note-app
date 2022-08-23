@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { NoteProvider, useNote } from "../../note-context";
 import FilterLabel from "./FilterLabel";
@@ -9,6 +9,7 @@ export default function Aside() {
   const { state, dispatch } = useNote();
   const { state: authState, dispatch: authDispatch } = useAuth();
   const [showFilter, setShowFilter] = useState(false);
+  const navigate = useNavigate();
 
   const updatedLabel = [...state.notes, ...state.pinned].reduce((acc, curr) => {
     if (acc.indexOf(curr.label) === -1) {
@@ -20,6 +21,7 @@ export default function Aside() {
   function logoutHandler() {
     localStorage.removeItem("authToken");
     authDispatch({ type: "SET_AUTH", payload: false });
+    navigate("/login");
   }
 
   return (

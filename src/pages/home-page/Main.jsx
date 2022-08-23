@@ -38,11 +38,6 @@ export default function Main() {
   async function clickHandler() {
     let token = localStorage.getItem("authToken");
     if (title.length > 0 && content.length > 0) {
-      // dispatch({
-      //   type: "ADD_NOTES",
-      //   payload: { id: uuid(), title, content, color, label, date: new Date() },
-      // });
-      // dispatch({ type: "ADD_LABEL" });
       try {
         const response = await axios.post(
           "/api/notes",
@@ -163,7 +158,7 @@ export default function Main() {
           }}
         />
         <div className="note-lower-date-and-icons">
-          <div className="note-date-icons">Date & time</div>
+          <div className="note-date-icons"></div>
           <div className="note-lower-icons">
             <input
               className="note-label-ip"

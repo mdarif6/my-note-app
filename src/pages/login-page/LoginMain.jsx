@@ -74,9 +74,12 @@ export default function LoginMain() {
             <a href="#">
               <button
                 className={
-                  email === "" || password === ""
-                    ? "btn btn-primary disabled-btn"
-                    : "btn btn-primary"
+                  email.length > 0 && password.length > 0
+                    ? "btn btn-primary "
+                    : "btn btn-primary disabled-btn"
+                }
+                disabled={
+                  email.length > 0 && password.length > 0 ? false : true
                 }
               >
                 Login

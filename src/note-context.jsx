@@ -64,13 +64,6 @@ function noteReducer(state, action) {
       );
       return { ...state, trash: updatedTrash };
 
-    // case "COLOR":
-    //   const newNotes = [...state.notes];
-    //   const noteIndex = newNotes.findIndex(
-    //     (item) => item.id === action.payload
-    //   );
-    //   return { ...state, notes: newNotes };
-
     case "LATEST_NOTE":
       return { ...state, sortByTime: action.type };
     case "OLDTEST_NOTE":

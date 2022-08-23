@@ -125,7 +125,6 @@ export default function NoteCard({ note }) {
             onClick={() => {
               dispatch({ type: "ADD_TO_PIN", payload: note });
             }}
-            // onClick={pinHandler}
           ></i>
         </div>
       </div>
