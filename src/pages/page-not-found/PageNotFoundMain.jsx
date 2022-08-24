@@ -11,7 +11,7 @@ export default function PageNotFoundMain() {
       <div className="typora-error-msg">
         <h3>Sorry, this page isn't available</h3>
         <small>
-          The link youo followed may be broken, or the page may have been
+          The link you followed may be broken, or the page may have been
           removed.
         </small>
 
