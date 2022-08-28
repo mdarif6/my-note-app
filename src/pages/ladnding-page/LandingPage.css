@@ -21,10 +21,10 @@ body {
 }
 
 .typora-hero {
-  padding: 2rem;
+  /* padding: 2rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 .typora-hero img {
   max-width: 350px;
@@ -37,14 +37,13 @@ body {
   flex-direction: column;
   justify-content: space-around;
   text-align: left;
-  padding-right: 5rem;
 }
-.main-heading {
-  padding-left: 1rem;
+.main-heading-landing {
+  text-align: center;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
-.main-heading span {
+.main-heading-landing span {
   color: var(--typora-primary-color);
 }
 .middle-bold {
@@ -67,17 +66,13 @@ body {
   color: var(--typora-primary-color);
 }
 
-.lower-content {
-  padding-right: 1rem;
-}
-
-.typora-login-link {
-  padding-left: 1rem;
+.lower-content .landing-btn {
+  width: 50%;
 }
 @media only screen and (max-width: 800px) {
   .landing-main-container {
-    margin: 2rem auto;
-    width: 60%;
+    margin: auto;
+    width: 80%;
     height: auto;
   }
   .landing-main-information {
@@ -86,7 +81,6 @@ body {
     justify-content: space-around;
     text-align: left;
     padding-right: 0;
-    padding-left: 1rem;
   }
   .main-heading {
     padding-left: 0.5rem;
@@ -112,6 +106,9 @@ body {
     max-width: 200px;
   }
   .lower-content {
-    padding-right: 0;
+    text-align: center;
+  }
+  .lower-content .landing-btn {
+    width: 100%;
   }
 }

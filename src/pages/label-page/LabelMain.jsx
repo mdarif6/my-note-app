@@ -54,7 +54,7 @@ export default function LabelMain() {
         <>
           {state.label.map((note) => (
             <div
-              className="typora-note"
+              className="typora-note output-display"
               key={note._id}
               style={{ backgroundColor: note.color }}
             >

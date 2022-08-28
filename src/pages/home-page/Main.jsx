@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { useNote } from "../../note-context";
-import { v4 as uuid } from "uuid";
 import axios from "axios";
 import { useEffect } from "react";
 import NoteCard from "./NoteCard";
@@ -136,7 +135,7 @@ export default function Main() {
         </div>
       </div>
 
-      <div className="typora-note">
+      <div className="typora-note output-display">
         <div className="note-title-and-pin">
           <textarea
             className="note-title"
@@ -147,7 +146,6 @@ export default function Main() {
             }}
             onClick={() => setShowNote(!showNote)}
           />
-          <div>{/* <i className="fas fa-thumbtack"></i> */}</div>
         </div>
         <textarea
           className="note-content"
@@ -181,8 +179,15 @@ export default function Main() {
       })}
 
       {/* pin */}
+      {state.pinned.length > 0 ? (
+        <>
+          <div className="pinned-note">
+            <i class="fas fa-thumbtack"></i>
+            <div id="note-category">Pinned Message</div>
+          </div>
+        </>
+      ) : null}
 
-      <div id="note-category">PINNED</div>
       {state.pinned.map((note) => (
         <PinCard note={note} key={note._id} />
       ))}

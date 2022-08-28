@@ -1,5 +1,5 @@
 import "./App.css";
-import logo from "./logo.png";
+
 import ArchivePage from "./pages/archive-page/ArchivePage";
 import HomePage from "./pages/home-page/HomePage";
 import LabelPage from "./pages/label-page/LabelPage";
@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import Mockman from "mockman-js";
 import { useAuth } from "./auth-context";
 import PageNotFound from "./pages/page-not-found/PageNotFound";
+import LayoutComponent from "./pages/layout-component/LayoutComponent";
 
 function App() {
   const { state, dispatch } = useAuth();
@@ -26,47 +27,49 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route
-          path="/home"
-          element={
-            <PrivateRoute>
-              <HomePage />
-            </PrivateRoute>
-          }
-        />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="*" element={<PageNotFound />} />
-        <Route
-          path="/label"
-          element={
-            <PrivateRoute>
-              <LabelPage />
-            </PrivateRoute>
-          }
-        />
+      <LayoutComponent>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route
+            path="/home"
+            element={
+              <PrivateRoute>
+                <HomePage />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="*" element={<PageNotFound />} />
+          <Route
+            path="/label"
+            element={
+              <PrivateRoute>
+                <LabelPage />
+              </PrivateRoute>
+            }
+          />
 
-        <Route
-          path="/archive"
-          element={
-            <PrivateRoute>
-              <ArchivePage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/trash"
-          element={
-            <PrivateRoute>
-              <TrashPage />
-            </PrivateRoute>
-          }
-        />
+          <Route
+            path="/archive"
+            element={
+              <PrivateRoute>
+                <ArchivePage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/trash"
+            element={
+              <PrivateRoute>
+                <TrashPage />
+              </PrivateRoute>
+            }
+          />
 
-        <Route path="/mockman" element={<Mockman />} />
-      </Routes>
+          <Route path="/mockman" element={<Mockman />} />
+        </Routes>
+      </LayoutComponent>
     </div>
   );
 }
