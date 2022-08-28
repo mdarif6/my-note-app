@@ -6,7 +6,7 @@ export default function LandingPage() {
   return (
     <div className="landing-main-container">
       <div className="landing-main-information">
-        <div className="main-heading">
+        <div className="main-heading-landing">
           type <span>note</span>
         </div>
         <div className="middle-content">
@@ -28,7 +28,7 @@ export default function LandingPage() {
         </div>
         <div className="lower-content">
           <Link className="link-style" to="/signup">
-            <button className="btn btn-primary">Join Now</button>
+            <button className="btn btn-primary landing-btn">Join Now</button>
           </Link>
           <Link className="link-style" to="/login">
             <p className="typora-login-link">Alredy have an account ?</p>

@@ -1,0 +1,12 @@
+.note-aside-main {
+  display: flex;
+}
+.note-layoutcomponent {
+  min-height: calc(100vh - 123.59px);
+  flex-grow: 1;
+}
+@media only screen and (max-width: 800px) {
+  .note-aside-main {
+    flex-direction: column;
+  }
+}
