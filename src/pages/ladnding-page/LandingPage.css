@@ -20,12 +20,6 @@ body {
   background-color: var(--typora-white-color);
 }
 
-.typora-hero {
-  /* padding: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center; */
-}
 .typora-hero img {
   max-width: 350px;
 }

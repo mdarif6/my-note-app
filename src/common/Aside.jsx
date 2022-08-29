@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useNote } from "../note-context";
 import FilterLabel from "../pages/home-page/FilterLabel";
@@ -28,48 +28,63 @@ export default function Aside() {
     <aside className="typora-aside">
       <div className="aside-content-wraper">
         <div className="typora-aside-content">
-          <div className="aside-content-label">
-            <div>
-              <i className="fas fa-home"></i>
-            </div>
-            <Link className="link-style" to="/home">
-              <div className="link-active">Home</div>
-            </Link>
-          </div>
-
-          <div className="aside-content-label">
-            <div>
-              <i className="fas fa-tag"></i>
-            </div>
-            <Link className="link-style" to="/label">
-              <div
-                onClick={() => {
-                  setCurrentTab(0);
-                  tabStyle();
-                }}
-                style={currentTab === 1 ? { fontStyle: tabTextStyle } : {}}
-              >
-                Labels
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "link-style  link-active" : "link-style"
+            }
+            to="/home"
+          >
+            <div className="aside-content-label">
+              <div>
+                <i className="fas fa-home"></i>
               </div>
-            </Link>
-          </div>
 
-          <div className="aside-content-label">
-            <div>
-              <i className="fas fa-archive"></i>
+              <div>Home</div>
             </div>
-            <Link className="link-style" to="/archive">
+          </NavLink>
+
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "link-style  link-active" : "link-style"
+            }
+            to="/label"
+          >
+            <div className="aside-content-label">
+              <div>
+                <i className="fas fa-tag"></i>
+              </div>
+              <div>Labels</div>
+            </div>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "link-style  link-active" : "link-style"
+            }
+            to="/archive"
+          >
+            <div className="aside-content-label">
+              <div>
+                <i className="fas fa-archive"></i>
+              </div>
+
               <div>Archive</div>
-            </Link>
-          </div>
-          <div className="aside-content-label">
-            <div>
-              <i className="fas fa-trash"></i>
             </div>
-            <Link className="link-style" to="/trash">
+          </NavLink>
+
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "link-style  link-active" : "link-style"
+            }
+            to="/trash"
+          >
+            <div className="aside-content-label">
+              <div>
+                <i className="fas fa-trash"></i>
+              </div>
+
               <div>Trash</div>
-            </Link>
-          </div>
+            </div>
+          </NavLink>
 
           {authState.isAuthenticated ? (
             <div className="aside-content-label">
@@ -95,7 +110,7 @@ export default function Aside() {
             Sort & Filter Notes
             <i
               id="drop-down"
-              className="fas fa-chevron-circle-down"
+              className="fas fa-filter"
               onClick={() => setShowFilter(!showFilter)}
             ></i>
           </div>
@@ -103,7 +118,7 @@ export default function Aside() {
           {showFilter && (
             <div className="to-show-all-sorting">
               <div className="sorting">
-                <label className="lable-name" for="time">
+                <label className="lable-name" htmlFor="time">
                   Sort By
                 </label>
                 <div>

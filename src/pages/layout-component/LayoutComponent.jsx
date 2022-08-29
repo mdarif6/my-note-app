@@ -1,6 +1,6 @@
 import Header from "../../common/Header";
 import Footer from "../../common/Footer";
-import Aside from "../home-page/Aside";
+import Aside from "../../common/Aside";
 import "./LayoutComponent.css";
 import { useLocation } from "react-router-dom";
 
