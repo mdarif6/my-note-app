@@ -50,6 +50,7 @@ body {
   color: #551a8b;
   display: flex;
   gap: 1rem;
+  cursor: pointer;
 }
 
 .typora-footer {
@@ -200,8 +201,9 @@ body {
 }
 .note-lower-icons {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
+  padding: 1rem;
 }
 .note-label-op {
   width: fit-content;
@@ -326,6 +328,7 @@ input.select-input {
     flex-wrap: wrap;
     flex-direction: row;
     gap: 0.7rem;
+    justify-content: space-around;
   }
   .aside-content-label {
     padding: 0.7rem;

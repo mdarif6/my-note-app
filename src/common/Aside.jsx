@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useNote } from "../note-context";
 import FilterLabel from "../pages/home-page/FilterLabel";
@@ -10,6 +10,8 @@ export default function Aside() {
   const { state: authState, dispatch: authDispatch } = useAuth();
   const [showFilter, setShowFilter] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
 
   const updatedLabel = [...state.notes, ...state.pinned].reduce((acc, curr) => {
     if (acc.indexOf(curr.label) === -1) {
@@ -105,56 +107,58 @@ export default function Aside() {
           )}
         </div>
 
-        <div className="typora-sorting-container">
-          <div className="sorting-heading">
-            Sort & Filter Notes
-            <i
-              id="drop-down"
-              className="fas fa-filter"
-              onClick={() => setShowFilter(!showFilter)}
-            ></i>
-          </div>
-          <div className="blank-div"></div>
-          {showFilter && (
-            <div className="to-show-all-sorting">
-              <div className="sorting">
-                <label className="lable-name" htmlFor="time">
-                  Sort By
-                </label>
-                <div>
-                  <div>
-                    <input
-                      type="radio"
-                      name="time-radio"
-                      value="latest time"
-                      onChange={() => dispatch({ type: "LATEST_NOTE" })}
-                    />
-                    <label htmlFor="newest first">Newst First</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      name="time-radio"
-                      value="oldest time"
-                      onChange={() => dispatch({ type: "OLDTEST_NOTE" })}
-                    />
-                    <label htmlFor="oldest first">Oldest First</label>
-                  </div>
-                </div>
-              </div>
-
-              <div className="selection">
-                <label className="lable-name">Select Label</label>
-
-                <div className="select-checkbox">
-                  {updatedLabel.map((item) => {
-                    return <FilterLabel key={item} item={item} />;
-                  })}
-                </div>
-              </div>
+        {location.pathname === "/home" ? (
+          <div className="typora-sorting-container">
+            <div className="sorting-heading">
+              Sort & Filter Notes
+              <i
+                id="drop-down"
+                className="fas fa-filter"
+                onClick={() => setShowFilter(!showFilter)}
+              ></i>
             </div>
-          )}
-        </div>
+            <div className="blank-div"></div>
+            {showFilter && (
+              <div className="to-show-all-sorting">
+                <div className="sorting">
+                  <label className="lable-name" htmlFor="time">
+                    Sort By
+                  </label>
+                  <div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="time-radio"
+                        value="latest time"
+                        onChange={() => dispatch({ type: "LATEST_NOTE" })}
+                      />
+                      <label htmlFor="newest first">Newst First</label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="time-radio"
+                        value="oldest time"
+                        onChange={() => dispatch({ type: "OLDTEST_NOTE" })}
+                      />
+                      <label htmlFor="oldest first">Oldest First</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="selection">
+                  <label className="lable-name">Select Label</label>
+
+                  <div className="select-checkbox">
+                    {updatedLabel.map((item) => {
+                      return <FilterLabel key={item} item={item} />;
+                    })}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        ) : null}
       </div>
     </aside>
   );
