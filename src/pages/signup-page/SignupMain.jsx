@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "./SignupPage.css";
 import axios from "axios";
 import { useAuth } from "../../auth-context";
 export default function SignupMain() {
